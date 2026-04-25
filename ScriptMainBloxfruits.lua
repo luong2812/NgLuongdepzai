@@ -436,11 +436,13 @@ if executor then
         string.find(executor, "CodeX") or
         string.find(executor, "Velocity") or
         string.find(executor, "Romix") or
-        string.find(executor, "Neutron")
+        string.find(executor, "Neutron") or
+        string.find(executor, "Madium") or
+        string.find(executor, "Yub-X")
     then
         print("ok")
     else
-        game.Players.LocalPlayer:Kick("Please use Delta Exploit or PC use volcano or Exploit paid!")
+        game.Players.LocalPlayer:Kick("Please use Delta Exploit or PC use Velocity or Exploit paid!")
     end
 end
 
