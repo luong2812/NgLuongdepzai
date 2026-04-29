@@ -288,7 +288,7 @@ GetConnectionEnemies = function(a)
   end
 end
 LowCpu = function()
-  local decalsyeeted = true
+ local decalsyeeted = false
   local g = game
   local w = g.Workspace
   local l = g.Lighting
