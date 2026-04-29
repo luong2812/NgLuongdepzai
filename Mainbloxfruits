@@ -288,7 +288,7 @@ GetConnectionEnemies = function(a)
   end
 end
 LowCpu = function()
- local decalsyeeted = false
+  local decalsyeeted = false
   local g = game
   local w = g.Workspace
   local l = g.Lighting
@@ -6860,7 +6860,6 @@ task.spawn(function()
   end)
 end)
 Window:SelectTab(1)
-Window:SelectTab(1)
 local ScreenGui = Instance.new("ScreenGui")
 local ImageButton = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
@@ -6868,26 +6867,20 @@ local UICorner = Instance.new("UICorner")
 ScreenGui.Name = "LunixMobile_Toggle"
 ScreenGui.Parent = game:GetService("CoreGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.ResetOnSpawn = false
 
 ImageButton.Parent = ScreenGui
--- FIX 1: Bỏ nền đen, để ảnh hiện đúng màu
-ImageButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-ImageButton.BackgroundTransparency = 1          -- trong suốt hoàn toàn, chỉ thấy ảnh
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BackgroundTransparency = 0.5
 ImageButton.Position = UDim2.new(0.1, 0, 0.2, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
 ImageButton.Active = true
-ImageButton.Image = "rbxassetid://106718047055054"
-ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255)  -- không tint màu
-ImageButton.ImageTransparency = 0                         -- ảnh hiện 100%
+-- Bạn thay ID Logo kênh hoặc ảnh bạn thích vào số dưới đây nhé
+ImageButton.Image = "rbxassetid://106718047055054" 
 
 UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = ImageButton
 
--- FIX 2: Đổi LeftControl → End để khớp với MinimizeKey của Window
 ImageButton.MouseButton1Click:Connect(function()
-    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game)
-    task.wait(0.05)
-    game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.End, false, game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
 end)
