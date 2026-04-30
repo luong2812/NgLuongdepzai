@@ -6869,18 +6869,15 @@ ScreenGui.Parent = game:GetService("CoreGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 ImageButton.Parent = ScreenGui
-ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ImageButton.BackgroundTransparency = 1 -- Trong suốt nền theo ý bạn
-ImageButton.Position = UDim2.new(0.1, 0, 0.2, 0)
+ImageButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ImageButton.BackgroundTransparency = 0.3
+ImageButton.Position = UDim2.new(0, 10, 0.5, 0)
 ImageButton.Size = UDim2.new(0, 60, 0, 60)
 ImageButton.Draggable = true
 ImageButton.Active = true
-
--- Dùng ID Roblox chuẩn bạn vừa đưa:
-ImageButton.Image = "rbxassetid://6019213965" 
--- PHẢI VIẾT ĐẦY ĐỦ DÒNG NÀY ĐỂ ĐÓNG NGOẶC SCRIPT:
-ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255) 
-
+ImageButton.Image = "rbxassetid://91636648121784" -- thay bằng ID thật
+ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.ImageTransparency = 0
 UICorner.Parent = ImageButton
 UICorner.CornerRadius = UDim.new(0, 10)
 
