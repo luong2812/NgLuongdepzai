@@ -6865,29 +6865,29 @@ local ImageButton = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
 
 ScreenGui.Name = "LunixMobile_Toggle"
--- Thử dùng Parent là CoreGui, nếu không thấy hãy thử thay bằng plr.PlayerGui
 ScreenGui.Parent = game:GetService("CoreGui") 
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 ImageButton.Parent = ScreenGui
 ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ImageButton.BackgroundTransparency = 1 -- Đã để là 1 theo ý bạn
+ImageButton.BackgroundTransparency = 1 -- Trong suốt nền theo ý bạn
 ImageButton.Position = UDim2.new(0.1, 0, 0.2, 0)
-ImageButton.Size = UDim2.new(0, 60, 0, 60) -- Chỉnh to lên một chút cho dễ thấy
+ImageButton.Size = UDim2.new(0, 60, 0, 60)
 ImageButton.Draggable = true
 ImageButton.Active = true
 
--- DÙNG ID NÀY ĐỂ TEST TRƯỚC (Đây là logo chuẩn)
+-- Dùng ID Roblox chuẩn bạn vừa đưa:
 ImageButton.Image = "rbxassetid://6019213965" 
-ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255) -- Viết đầy đủ dòng này
+-- PHẢI VIẾT ĐẦY ĐỦ DÒNG NÀY ĐỂ ĐÓNG NGOẶC SCRIPT:
+ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255) 
 
 UICorner.Parent = ImageButton
-UICorner.CornerRadius = UDim.new(0, 8)
+UICorner.CornerRadius = UDim.new(0, 10)
 
--- Hàm ẩn/hiện Menu khi bấm vào Logo
+-- Hàm để bấm vào thì hiện Menu Lunix
 ImageButton.MouseButton1Click:Connect(function()
-    -- Thay 'MainFrame' bằng tên cái khung Menu chính của bạn
-    if Window then 
-        -- Code để ẩn/hiện UI của bạn ở đây
+    local target = game:GetService("CoreGui"):FindFirstChild("LunixMobile") or game:GetService("CoreGui"):FindFirstChild("Main")
+    if target then
+        target.Enabled = not target.Enabled
     end
 end)
