@@ -6888,7 +6888,7 @@ ImageButton.Active = true
 ImageButton.ZIndex = 10
 
 -- Set image
-ImageButton.Image = "rbxassetid://91636648121784"
+ImageButton.Image = "rbxassetid://4483345998"
 ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton.ImageTransparency = 0
 ImageButton.ScaleType = Enum.ScaleType.Fit
@@ -6912,7 +6912,6 @@ ImageButton:GetPropertyChangedSignal("Image"):Connect(function()
         fallbackLabel.Visible = false
     end
 end)
-
 UICorner.Parent = ImageButton
 UICorner.CornerRadius = UDim.new(0, 12)
 
