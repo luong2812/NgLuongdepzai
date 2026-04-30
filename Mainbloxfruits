@@ -288,7 +288,7 @@ GetConnectionEnemies = function(a)
   end
 end
 LowCpu = function()
-  local decalsyeeted = false
+  local decalsyeeted = true
   local g = game
   local w = g.Workspace
   local l = g.Lighting
@@ -317,6 +317,7 @@ LowCpu = function()
     elseif v:IsA("MeshPart") then
       v.Material = "Plastic"
       v.Reflectance = 0
+      v.TextureID = 10385902758728957
     end
   end
   for i, e in pairs(l:GetChildren()) do
@@ -6867,18 +6868,18 @@ ScreenGui.Name = "LunixMobile_Toggle"
 ScreenGui.Parent = game:GetService("CoreGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
+-- Tìm đến đoạn khởi tạo ImageButton ở cuối script và thay bằng đoạn này:
 ImageButton.Parent = ScreenGui
-ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ImageButton.BackgroundTransparency = 0.5
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- Để màu trắng
+ImageButton.BackgroundTransparency = 1 -- Đảm bảo nền trong suốt hoàn toàn
 ImageButton.Position = UDim2.new(0.1, 0, 0.2, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
 ImageButton.Active = true
--- Bạn thay ID Logo kênh hoặc ảnh bạn thích vào số dưới đây nhé
-ImageButton.Image = "rbxassetid://10385902758728957" 
-ImageButton.ImageColor3 = Color3.fromRGB(255,255,255)
-ImageButton.ImageTransparency = 0
-ImageButton.ScaleType = Enum.ScaleType.Fit
+
+-- THAY ID VÀ MÀU TẠI ĐÂY:
+ImageButton.Image = "rbxassetid://10385902758728957" -- Dùng ID bạn đã cung cấp
+ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255) -- BẮT BUỘC phải là (255, 255, 255) để hiện màu gốc
 
 UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = ImageButton
