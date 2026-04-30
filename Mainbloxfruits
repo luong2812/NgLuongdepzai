@@ -317,7 +317,6 @@ LowCpu = function()
     elseif v:IsA("MeshPart") then
       v.Material = "Plastic"
       v.Reflectance = 0
-      v.TextureID = 10385902758728957
     end
   end
   for i, e in pairs(l:GetChildren()) do
@@ -6876,7 +6875,10 @@ ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
 ImageButton.Active = true
 -- Bạn thay ID Logo kênh hoặc ảnh bạn thích vào số dưới đây nhé
-ImageButton.Image = "rbxassetid://106718047055054" 
+ImageButton.Image = "rbxassetid://10385902758728957" 
+ImageButton.ImageColor3 = Color3.fromRGB(255,255,255)
+ImageButton.ImageTransparency = 0
+ImageButton.ScaleType = Enum.ScaleType.Fit
 
 UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = ImageButton
