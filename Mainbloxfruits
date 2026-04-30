@@ -6860,30 +6860,71 @@ task.spawn(function()
   end)
 end)
 Window:SelectTab(1)
+-- Mobile Toggle Button
 local ScreenGui = Instance.new("ScreenGui")
 local ImageButton = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
+local UIStroke = Instance.new("UIStroke")
 
 ScreenGui.Name = "LunixMobile_Toggle"
-ScreenGui.Parent = game:GetService("CoreGui") 
+ScreenGui.ResetOnSpawn = false
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
+-- Thử CoreGui trước, nếu lỗi thì dùng PlayerGui
+local success = pcall(function()
+    ScreenGui.Parent = game:GetService("CoreGui")
+end)
+if not success then
+    ScreenGui.Parent = plr.PlayerGui
+end
+
 ImageButton.Parent = ScreenGui
-ImageButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-ImageButton.BackgroundTransparency = 0.3
+ImageButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+ImageButton.BackgroundTransparency = 0.2
 ImageButton.Position = UDim2.new(0, 10, 0.5, 0)
-ImageButton.Size = UDim2.new(0, 60, 0, 60)
+ImageButton.Size = UDim2.new(0, 65, 0, 65)
 ImageButton.Draggable = true
 ImageButton.Active = true
-ImageButton.Image = "rbxassetid://91636648121784" -- thay bằng ID thật
+ImageButton.ZIndex = 10
+
+-- Set image
+ImageButton.Image = "rbxassetid://91636648121784"
 ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton.ImageTransparency = 0
-UICorner.Parent = ImageButton
-UICorner.CornerRadius = UDim.new(0, 10)
+ImageButton.ScaleType = Enum.ScaleType.Fit
 
--- Hàm để bấm vào thì hiện Menu Lunix
+-- Nếu image không load được thì hiện chữ "L"
+ImageButton.ImageLabel = nil
+local fallbackLabel = Instance.new("TextLabel")
+fallbackLabel.Parent = ImageButton
+fallbackLabel.Size = UDim2.new(1, 0, 1, 0)
+fallbackLabel.BackgroundTransparency = 1
+fallbackLabel.Text = "L"
+fallbackLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+fallbackLabel.TextScaled = true
+fallbackLabel.Font = Enum.Font.GothamBold
+fallbackLabel.ZIndex = 11
+fallbackLabel.Visible = true
+
+-- Ẩn fallback nếu image load được
+ImageButton:GetPropertyChangedSignal("Image"):Connect(function()
+    if ImageButton.Image ~= "" then
+        fallbackLabel.Visible = false
+    end
+end)
+
+UICorner.Parent = ImageButton
+UICorner.CornerRadius = UDim.new(0, 12)
+
+UIStroke.Parent = ImageButton
+UIStroke.Color = Color3.fromRGB(100, 100, 100)
+UIStroke.Thickness = 1.5
+
+-- Toggle menu khi bấm
 ImageButton.MouseButton1Click:Connect(function()
-    local target = game:GetService("CoreGui"):FindFirstChild("LunixMobile") or game:GetService("CoreGui"):FindFirstChild("Main")
+    local coreGui = game:GetService("CoreGui")
+    local target = coreGui:FindFirstChild("LunixMobile") 
+                or coreGui:FindFirstChild("Main")
     if target then
         target.Enabled = not target.Enabled
     end
