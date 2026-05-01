@@ -30,7 +30,7 @@ do
   Num_self = 25
 end
 
-repeat local start = plr.PlayerGui:WaitForChild("Main"):WaitForChild("Loading") and game:IsLoaded() wait() until start
+repeat wait() until game:IsLoaded() and plr.PlayerGui:FindFirstChild("Main")
 World1 = game.PlaceId == 2753915549
 World2 = game.PlaceId == 79091703265657
 World3 = game.PlaceId == 100117331123089
