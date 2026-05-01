@@ -689,7 +689,7 @@ ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
 ImageButton.Active = true
 -- Bạn thay ID Logo kênh hoặc ảnh bạn thích vào số dưới đây nhé
-ImageButton.Image = "rbxassetid://136374136325692" 
+ImageButton.Image = "rbxassetid://110177613233650" 
 
 UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = ImageButton
