@@ -32,8 +32,8 @@ end
 
 repeat local start = plr.PlayerGui:WaitForChild("Main"):WaitForChild("Loading") and game:IsLoaded() wait() until start
 World1 = game.PlaceId == 2753915549
-World2 = game.PlaceId == 4442272183
-World3 = game.PlaceId == 7449423635
+World2 = game.PlaceId == 79091703265657
+World3 = game.PlaceId == 100117331123089
 Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
 Marines = function() replicated.Remotes.CommF_:InvokeServer("SetTeam","Marines") end
 Pirates = function() replicated.Remotes.CommF_:InvokeServer("SetTeam","Pirates") end
@@ -317,7 +317,7 @@ LowCpu = function()
     elseif v:IsA("MeshPart") then
       v.Material = "Plastic"
       v.Reflectance = 0
-      v.TextureID = 6019213965 
+      v.TextureID = 10385902758728957
     end
   end
   for i, e in pairs(l:GetChildren()) do
@@ -672,6 +672,31 @@ QuestNeta = function()
     [6] = PosQ
   }
 end
+
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+
+ScreenGui.Name = "LunixMobile_Toggle"
+ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BackgroundTransparency = 0.5
+ImageButton.Position = UDim2.new(0.1, 0, 0.2, 0)
+ImageButton.Size = UDim2.new(0, 50, 0, 50)
+ImageButton.Draggable = true
+ImageButton.Active = true
+-- Bạn thay ID Logo kênh hoặc ảnh bạn thích vào số dưới đây nhé
+ImageButton.Image = "rbxassetid://83109821876237" 
+
+UICorner.CornerRadius = UDim.new(1, 0)
+UICorner.Parent = ImageButton
+
+ImageButton.MouseButton1Click:Connect(function()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
+end)
 
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local Window = Fluent:CreateWindow({Title = "Lunix hub [Freemium] ",SubTitle = "by Karious",TabWidth = 155,Size = UDim2.fromOffset(555, 320),Acrylic = false,Theme = "Dark",MinimizeKey = Enum.KeyCode.End})
@@ -6860,71 +6885,3 @@ task.spawn(function()
   end)
 end)
 Window:SelectTab(1)
--- Mobile Toggle Button
-local ScreenGui = Instance.new("ScreenGui")
-local ImageButton = Instance.new("ImageButton")
-local UICorner = Instance.new("UICorner")
-local UIStroke = Instance.new("UIStroke")
-
-ScreenGui.Name = "LunixMobile_Toggle"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
--- Thử CoreGui trước, nếu lỗi thì dùng PlayerGui
-local success = pcall(function()
-    ScreenGui.Parent = game:GetService("CoreGui")
-end)
-if not success then
-    ScreenGui.Parent = plr.PlayerGui
-end
-
-ImageButton.Parent = ScreenGui
-ImageButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-ImageButton.BackgroundTransparency = 0.2
-ImageButton.Position = UDim2.new(0, 10, 0.5, 0)
-ImageButton.Size = UDim2.new(0, 65, 0, 65)
-ImageButton.Draggable = true
-ImageButton.Active = true
-ImageButton.ZIndex = 10
-
--- Set image
-ImageButton.Image = "rbxassetid://4483345998"
-ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
-ImageButton.ImageTransparency = 0
-ImageButton.ScaleType = Enum.ScaleType.Fit
-
--- Nếu image không load được thì hiện chữ "L"
-ImageButton.ImageLabel = nil
-local fallbackLabel = Instance.new("TextLabel")
-fallbackLabel.Parent = ImageButton
-fallbackLabel.Size = UDim2.new(1, 0, 1, 0)
-fallbackLabel.BackgroundTransparency = 1
-fallbackLabel.Text = "L"
-fallbackLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-fallbackLabel.TextScaled = true
-fallbackLabel.Font = Enum.Font.GothamBold
-fallbackLabel.ZIndex = 11
-fallbackLabel.Visible = true
-
--- Ẩn fallback nếu image load được
-ImageButton:GetPropertyChangedSignal("Image"):Connect(function()
-    if ImageButton.Image ~= "" then
-        fallbackLabel.Visible = false
-    end
-end)
-UICorner.Parent = ImageButton
-UICorner.CornerRadius = UDim.new(0, 12)
-
-UIStroke.Parent = ImageButton
-UIStroke.Color = Color3.fromRGB(100, 100, 100)
-UIStroke.Thickness = 1.5
-
--- Toggle menu khi bấm
-ImageButton.MouseButton1Click:Connect(function()
-    local coreGui = game:GetService("CoreGui")
-    local target = coreGui:FindFirstChild("LunixMobile") 
-                or coreGui:FindFirstChild("Main")
-    if target then
-        target.Enabled = not target.Enabled
-    end
-end)
