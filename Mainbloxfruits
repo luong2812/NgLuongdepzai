@@ -695,6 +695,33 @@ UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = ImageButton
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local Window = Fluent:CreateWindow({Title = "Lunix hub [Freemium] ",SubTitle = "by Karious",TabWidth = 155,Size = UDim2.fromOffset(555, 320),Acrylic = false,Theme = "Dark",MinimizeKey = Enum.KeyCode.End})
+task.spawn(function()
+    task.wait(0.3)
+    pcall(function()
+        local coreGui = game:GetService("CoreGui")
+        for _, gui in pairs(coreGui:GetDescendants()) do
+            if gui:IsA("TextLabel") and string.find(gui.Text, "Lunix hub") then
+                local titleFrame = gui.Parent
+                
+                -- Logo
+                local logo = Instance.new("ImageLabel")
+                logo.Size = UDim2.new(0, 28, 0, 28)
+                logo.Position = UDim2.new(0, 6, 0.5, -14)
+                logo.BackgroundTransparency = 1
+                logo.Image = "rbxassetid://110177613233650"
+                logo.ScaleType = Enum.ScaleType.Fit
+                logo.ZIndex = gui.ZIndex + 1
+                logo.Parent = titleFrame
+                
+                -- Dịch text title sang phải
+                gui.Position = UDim2.new(0, 40, gui.Position.Y.Scale, gui.Position.Y.Offset)
+                break
+            end
+        end
+    end)
+end)
+
+task.spawn(AddLogoToWindow, Window)
 ImageButton.MouseButton1Click:Connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game)
     task.wait(0.05)
